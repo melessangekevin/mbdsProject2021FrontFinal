@@ -1,0 +1,46 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <small>Modifier nouveau Assignments</small>
+          </div>
+          <form ngForm #assignmentForm class="form" (submit)="onSubmit(); assignmentForm.reset()">
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                </div>
+                <input class="form-control" [(ngModel)]="nomAssignment" name="nom" placeholder="Libelle" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-calendar"></i></span>
+                </div>
+                <input class="form-control" [(ngModel)]="dateDeRendu" name="date" placeholder="Date de rendu" type="date">
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary mt-4">Modifier</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

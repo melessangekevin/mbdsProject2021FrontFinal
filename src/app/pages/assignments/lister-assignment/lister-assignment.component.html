@@ -1,0 +1,106 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+                <h3 class="mb-0">Liste des assignments</h3>
+            </div>
+            <div class="col text-right">
+              <a *ngIf="authService.currentUser[0].isAdmin" type="submit" class="btn btn-primary" (click)="peuplerBD()">
+                Peupler BD
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr align="center">
+              <th scope="col">Nom du devoir</th>
+              <th scope="col">Date de rendu</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr align="center" *ngFor="let assignment of assignments; let i=index">
+              <td scope="row">
+                <div class="media align-items-center">
+                  <div class="media-body">
+                    <span class="mb-0 text-sm">{{assignment.nom}}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                {{assignment.dateDeRendu | date}}
+              </td>
+              <td>
+                  <span *ngIf="assignment.rendu; else nonsoumis" appRendu class="badge badge-dot mr-4">
+                    <i class="bg-success"></i> {{assignment.nom}} a été rendu.
+                  </span>
+                <ng-template #nonsoumis>
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-danger"></i> {{assignment.nom}} n'a pas été rendu.
+                    </span>
+                </ng-template>
+              </td>
+              <td class="text-right">
+                <a type="submit" class="btn btn-primary" routerLink="/details-assignment/{{assignment.id}}">
+                  Details
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item">
+                <a class="page-link" (click)="premierePage()" tabindex="-1">
+                  <i class="fas fa-fast-backward"></i>
+                  <span class="sr-only">Première page</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="pagePrecedente()" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Précédent</span>
+                </a>
+              </li>
+              <!--<li  *ngFor="let pageIndex of assignments; let i=index"class="page-item active">
+                <a class="page-link" href="javascript:void(0)">{{i + 1}}</a>
+              </li>-->
+              <li class="page-item">
+                <a class="page-link" (click)="pageSuivante()">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Suivant</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="dernierePage()" tabindex="-1">
+                  <i class="fas fa-fast-forward"></i>
+                  <span class="sr-only">Dernière page</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
