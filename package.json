@@ -1,14 +1,19 @@
 {
-  "name": "argon-dashboard-angular",
+  "name": "mdbs2021-melanon",
   "version": "1.4.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node server.js",
+    "build": "ng build --prod",
     "test": "ng test",
+    "watch": "ng build --watch --configuration development",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o"
+  },
+  "engines": {
+    "node": "v16.14.0",
+    "npm": "8.7.0"
   },
   "private": true,
   "dependencies": {
